@@ -28,8 +28,12 @@ jobs:
       - name: Backend Lint
         run: cd backend && npm run lint
 
-      - name: Backend Test
-        run: cd backend && npm test
+      - name: Backend Test # jumittaa tassa
+        env:
+          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          JWT_SECRET: ${{ secrets.SECRET }}
+        run: cd backend && npm run test
 
       - name: Backend Build
         run: cd backend && npm run build:ui

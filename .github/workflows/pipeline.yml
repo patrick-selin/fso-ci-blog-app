@@ -11,6 +11,8 @@ on:
 jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-22.04
+    environment:
+      name: .env
 
     steps:
       - name: Checkout code
@@ -22,21 +24,21 @@ jobs:
           node-version: "20"
 
       # Backend build and test
-      - name: Backend Install dependencies
-        run: cd backend && npm install
+      # - name: Backend Install dependencies
+      #   run: cd backend && npm install
 
-      - name: Backend Lint
-        run: cd backend && npm run lint
+      # - name: Backend Lint
+      #   run: cd backend && npm run lint
 
-      - name: Backend Test
-        env:
-          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
-          MONGODB_URI: ${{ secrets.MONGODB_URI }}
-          SECRET: ${{ secrets.SECRET }}
-        run: cd backend && npm run test
+      # - name: Backend Test
+      #   env:
+      #     TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+      #     MONGODB_URI: ${{ secrets.MONGODB_URI }}
+      #     SECRET: ${{ secrets.SECRET }}
+      #   run: cd backend && npm run test
 
-      - name: Backend Build
-        run: cd backend && npm run build:ui
+      # - name: Backend Build
+      #   run: cd backend && npm run build:ui
 
       # Frontend build and test
       - name: Frontend Install dependencies

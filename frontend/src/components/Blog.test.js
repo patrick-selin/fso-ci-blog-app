@@ -32,6 +32,7 @@ describe("<Blog />", () => {
     const user = userEvent.setup();
   });
 
+  // eslint-disable-next-line jest/expect-expect
   test("renders Blog component", () => {
     render(<Blog blog={blog} updateBlogPostLikes={likeButtonMockHandler} />);
   });

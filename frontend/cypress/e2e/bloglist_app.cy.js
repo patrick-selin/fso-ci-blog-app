@@ -8,16 +8,19 @@ describe("BlogPost app", function () {
       password: "aaaa",
     };
 
+
     cy.request("POST", "http://localhost:3003/api/users/", user);
     cy.visit("http://localhost:5173");
   });
 
+  // eslint-disable-next-line jest/expect-expect
   it("5.17 Login form is is shown by defaul", function () {
     cy.contains("blogs");
     cy.get("button").contains("Login").should("exist");
   });
 
   describe("5.18 Loggin in", function () {
+    // eslint-disable-next-line jest/expect-expect
     it("Login is successful, incorrect credentials", function () {
       cy.contains("Login").click();
       cy.get("#username").type("aaaa");
@@ -26,6 +29,7 @@ describe("BlogPost app", function () {
       cy.contains("Olen Aaa logged in");
     });
 
+    // eslint-disable-next-line jest/expect-expect
     it("Login is not succesful, correct credenials", function () {
       // TODO
       cy.contains("Login").click();
@@ -43,6 +47,7 @@ describe("BlogPost app", function () {
       cy.login({ username: "aaaa", password: "aaaa" });
     });
 
+    // eslint-disable-next-line jest/expect-expect
     it("a blog can be created", function () {
       cy.createBlog({
         title: "Hello Test Title",
@@ -68,11 +73,13 @@ describe("BlogPost app", function () {
       });
     });
 
+    // eslint-disable-next-line jest/expect-expect
     it("users can like a blog", function () {
       cy.contains("another blog").parent().find("button").click();
       cy.get("#like-button").click();
     });
 
+    // eslint-disable-next-line jest/expect-expect
     it("user can delete a post", function () {
       cy.contains("another blog").parent().find("button").click();
       cy.get("#remove-button").click();

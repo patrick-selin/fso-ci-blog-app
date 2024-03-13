@@ -23,23 +23,6 @@ jobs:
         with:
           node-version: "20"
 
-      # Backend build and test
-      # - name: Backend Install dependencies
-      #   run: cd backend && npm install
-
-      # - name: Backend Lint
-      #   run: cd backend && npm run lint
-
-      # - name: Backend Test
-      #   env:
-      #     TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
-      #     MONGODB_URI: ${{ secrets.MONGODB_URI }}
-      #     SECRET: ${{ secrets.SECRET }}
-      #   run: cd backend && npm run test
-
-      # - name: Backend Build
-      #   run: cd backend && npm run build:ui
-
       # Frontend build and test
       - name: Frontend Install dependencies
         run: cd frontend && npm install
@@ -52,6 +35,25 @@ jobs:
 
       - name: Frontend Build
         run: cd frontend && npm run build
+          
+      # Backend build and test
+      - name: Backend Install dependencies
+        run: cd backend && npm install
+
+      - name: Backend Lint
+        run: cd backend && npm run lint
+
+      - name: Backend Test
+        env:
+          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          SECRET: ${{ secrets.SECRET }}
+        run: cd backend && npm run test
+
+      - name: Backend Build
+        run: cd backend && npm run build:ui
+
+
 
   # deploy:
   #   name: Deploy app to Fly.io

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const config = require("../utils/config");
 const mongoose = require("mongoose");
 const supertest = require("supertest");
@@ -154,6 +155,7 @@ describe("api/blogs/:id DELETE", () => {
 });
 
 describe("api/blogs/:id PUT", () => {
+  // eslint-disable-next-line no-unused-vars
   let token = null;
   beforeAll(async () => {
     await Blog.deleteMany({});

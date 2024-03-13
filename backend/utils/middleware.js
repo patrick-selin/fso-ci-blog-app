@@ -3,6 +3,7 @@ const User = require("../models/userModel");
 const logger = require("./logger");
 const jwt = require("jsonwebtoken");
 
+// eslint-disable-next-line no-unused-vars
 morgan.token("req-body", (req, res) => JSON.stringify(req.body));
 
 const morganLogs = morgan(

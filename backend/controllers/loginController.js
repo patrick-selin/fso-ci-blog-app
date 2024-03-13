@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+// eslint-disable-next-line no-unused-vars
 const config = require("../utils/config");
 const bcrypt = require("bcrypt");
 const loginRouter = require("express").Router();

@@ -1,9 +1,12 @@
 // controller
+// eslint-disable-next-line no-unused-vars
 const config = require("../utils/config");
 const blogsRouter = require("express").Router();
 const jwt = require("jsonwebtoken");
+// eslint-disable-next-line no-unused-vars
 const middleware = require("../utils/middleware");
 const Blog = require("../models/blogPostModel");
+// eslint-disable-next-line no-unused-vars
 const User = require("../models/userModel");
 
 blogsRouter.get("/", async (req, res) => {

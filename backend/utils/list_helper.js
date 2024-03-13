@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const dummy = (blogs) => {
   return 1;
 };
@@ -25,7 +26,7 @@ const mostBlogs = (blogs) => {
   const blogCounts = {};
 
   blogs.forEach((blog) => {
-    if (blogCounts.hasOwnProperty(blog.author)) {
+    if (Object.prototype.hasOwnProperty.call(blogCounts, blog.author)) {
       blogCounts[blog.author]++;
     } else {
       blogCounts[blog.author] = 1;

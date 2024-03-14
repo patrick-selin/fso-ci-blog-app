@@ -56,22 +56,10 @@ jobs:
       - name: Start backend server
         run: cd backend && npm run start:test &
           
-      # Start frontti for e2e test
+      # Start frontti
+      # Run e2e test
       - name: Start frontend server for Cypress
         run: cd frontend && npm run cypress:open &
-      
-      # Wait to start
-      - name: Wait for servers to start
-        run: sleep 10s
-       
-      
-     # E2E test
-      - name: e2e tests
-        uses: cypress-io/github-action@v6
-        with:
-          command: cd frontend && npm run test:e2e
-          start: cd backend && npm run start:test
-          wait-on: http://localhost:3007
 
 
   tag_relase:

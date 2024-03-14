@@ -52,21 +52,25 @@ jobs:
       - name: Backend Build
         run: cd backend && npm run build:ui
        
-      # End-To-End testing  
+      # Start backki test mode
+      - name: Start backend server
+        run: cd backend && npm run start:test &
+          
+      # Start frontti for e2e test
+      - name: Start frontend server for Cypress
+        run: cd frontend && npm run cypress:open &
+      
+      # Wait to start
+      - name: Wait for servers to start
+        run: sleep 10s
+       
+      # e2e testing  
       - name: E2E testing
         uses: cypress-io/github-action@v5
         env:
           TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
           SECRET: ${{ secrets.JWT_SECRET }}
           PORT: ${{ secrets.PORT }}
-        with:
-          start: npm run start:test
-          wait-on: http://localhost:3007
-          command: npm run test:e2e
-      
-      - name: Run e2e Frontend Test
-        run: cd frontend && npm run cypress:open   
-
 
   # deploy:
   #   name: Deploy app to Fly.io

@@ -63,6 +63,9 @@ jobs:
           start: npm run start:test
           wait-on: http://localhost:3007
           command: npm run test:e2e
+      
+      - name: Run e2e Frontend Test
+        run: cd frontend && npm run cypress:open   
 
 
   # deploy:

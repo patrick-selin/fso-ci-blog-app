@@ -8,7 +8,6 @@ describe("BlogPost app", function () {
       password: "aaaa",
     };
 
-
     cy.request("POST", "http://localhost:3007/api/users/", user);
     cy.visit("http://localhost:3007");
   });
@@ -41,51 +40,4 @@ describe("BlogPost app", function () {
       cy.get(".error").should("have.css", "color", "rgb(255, 0, 0)");
     });
   });
-
-  // describe("5.19 When logged in", function () {
-  //   beforeEach(function () {
-  //     cy.login({ username: "aaaa", password: "aaaa" });
-  //   });
-
-  //   // eslint-disable-next-line jest/expect-expect
-  //   it("a blog can be created", function () {
-  //     cy.createBlog({
-  //       title: "Hello Test Title",
-  //       author: "Test Woman",
-  //       url: "https://www.testing.fi/",
-  //     });
-
-  //     cy.contains("Hello Test Title");
-  //   });
-  // });
-
-  // describe("5.20 5.21", function () {
-  //   beforeEach(function () {
-  //     cy.createBlog({
-  //       title: "New blog",
-  //       author: "john wayne",
-  //       url: "asko.gi/",
-  //       likes: 88,
-  //     });
-  //     cy.createBlog({
-  //       title: "another blog",
-  //       author: "Me and you",
-  //       url: "hyle.fi/",
-  //       likes: 55,
-  //     });
-  //   });
-
-  //   // eslint-disable-next-line jest/expect-expect
-  //   it("users can like a blog", function () {
-  //     cy.contains("another blog").parent().find("button").click();
-  //     cy.get("#like-button").click();
-  //   });
-
-  //   // eslint-disable-next-line jest/expect-expect
-  //   it("user can delete a post", function () {
-  //     cy.contains("another blog").parent().find("button").click();
-  //     cy.get("#remove-button").click();
-  //     cy.get("html").should("not.contain", "another blog");
-  //   });
-  // });
 });

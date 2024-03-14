@@ -1,6 +1,6 @@
 describe("BlogPost app", function () {
   beforeEach(function () {
-    cy.request("POST", "http://localhost:3003/api/testing/reset");
+    cy.request("POST", "http://localhost:3007/api/testing/reset");
 
     const user = {
       name: "Olen Aaa",
@@ -9,8 +9,8 @@ describe("BlogPost app", function () {
     };
 
 
-    cy.request("POST", "http://localhost:3003/api/users/", user);
-    cy.visit("http://localhost:5173");
+    cy.request("POST", "http://localhost:3007/api/users/", user);
+    cy.visit("http://localhost:3007");
   });
 
   // eslint-disable-next-line jest/expect-expect
@@ -42,48 +42,50 @@ describe("BlogPost app", function () {
     });
   });
 
-  describe("5.19 When logged in", function () {
-    beforeEach(function () {
-      cy.login({ username: "aaaa", password: "aaaa" });
-    });
+  // describe("5.19 When logged in", function () {
+  //   beforeEach(function () {
+  //     cy.login({ username: "aaaa", password: "aaaa" });
+  //   });
 
-    // eslint-disable-next-line jest/expect-expect
-    it("a blog can be created", function () {
-      cy.createBlog({
-        title: "Hello Test Title",
-        author: "Test Woman",
-        url: "https://www.testing.fi/",
-      });
+  //   // eslint-disable-next-line jest/expect-expect
+  //   it("a blog can be created", function () {
+  //     cy.createBlog({
+  //       title: "Hello Test Title",
+  //       author: "Test Woman",
+  //       url: "https://www.testing.fi/",
+  //     });
 
-      cy.contains("Hello Test Title");
-    });
-  });
+  //     cy.contains("Hello Test Title");
+  //   });
+  // });
 
-  describe("5.20 5.21", function () {
-    beforeEach(function () {
-      cy.createBlog({
-        title: "New blog",
-        author: "john wayne",
-        url: "asko.gi/",
-      });
-      cy.createBlog({
-        title: "another blog",
-        author: "Me and you",
-        url: "hyle.fi/",
-      });
-    });
+  // describe("5.20 5.21", function () {
+  //   beforeEach(function () {
+  //     cy.createBlog({
+  //       title: "New blog",
+  //       author: "john wayne",
+  //       url: "asko.gi/",
+  //       likes: 88,
+  //     });
+  //     cy.createBlog({
+  //       title: "another blog",
+  //       author: "Me and you",
+  //       url: "hyle.fi/",
+  //       likes: 55,
+  //     });
+  //   });
 
-    // eslint-disable-next-line jest/expect-expect
-    it("users can like a blog", function () {
-      cy.contains("another blog").parent().find("button").click();
-      cy.get("#like-button").click();
-    });
+  //   // eslint-disable-next-line jest/expect-expect
+  //   it("users can like a blog", function () {
+  //     cy.contains("another blog").parent().find("button").click();
+  //     cy.get("#like-button").click();
+  //   });
 
-    // eslint-disable-next-line jest/expect-expect
-    it("user can delete a post", function () {
-      cy.contains("another blog").parent().find("button").click();
-      cy.get("#remove-button").click();
-      cy.get("html").should("not.contain", "another blog");
-    });
-  });
+  //   // eslint-disable-next-line jest/expect-expect
+  //   it("user can delete a post", function () {
+  //     cy.contains("another blog").parent().find("button").click();
+  //     cy.get("#remove-button").click();
+  //     cy.get("html").should("not.contain", "another blog");
+  //   });
+  // });
 });

@@ -46,13 +46,23 @@ jobs:
       - name: Backend Test
         env:
           TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
-          MONGODB_URI: ${{ secrets.MONGODB_URI }}
           SECRET: ${{ secrets.SECRET }}
         run: cd backend && npm run test
 
       - name: Backend Build
         run: cd backend && npm run build:ui
-
+       
+      # End-To-End testing  
+      - name: E2E testing
+        uses: cypress-io/github-action@v5
+        env:
+          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+          SECRET: ${{ secrets.JWT_SECRET }}
+          PORT: ${{ secrets.PORT }}
+        with:
+          start: npm run start:test
+          wait-on: http://localhost:3007
+          command: npm run test:e2e
 
 
   # deploy:

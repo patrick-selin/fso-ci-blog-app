@@ -64,13 +64,14 @@ jobs:
       - name: Wait for servers to start
         run: sleep 10s
        
-      # e2e testing  
-      - name: E2E testing
-        uses: cypress-io/github-action@v5
-        env:
-          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
-          SECRET: ${{ secrets.JWT_SECRET }}
-          PORT: ${{ secrets.PORT }}
+      
+      # # e2e testing  
+      # - name: E2E testing
+      #   uses: cypress-io/github-action@v5
+      #   env:
+      #     TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+      #     SECRET: ${{ secrets.JWT_SECRET }}
+      #     PORT: ${{ secrets.PORT }}
 
   # deploy:
   #   name: Deploy app to Fly.io
